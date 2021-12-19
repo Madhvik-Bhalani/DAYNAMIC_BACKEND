@@ -1,14 +1,60 @@
+{{!-- navbar --}}
 <nav>
     <div id="navbar">
         <ul>
             <li> <a href="/">home</a></li>
             <li> <a href="#service">services</a></li>
-            <li> <a href="#location">location</a></li>
             <li> <a href="#about">about us</a></li>
             <li> <a href="#contact">contact us</a></li>
         </ul>
-        <div id="user">
-            <h1>{{user}}</h1>
+        <div class="togglemenu">
+            <i class="far fa-bars togglebtn"></i>
         </div>
     </div>
 </nav>
+
+{{!-- side bar --}}
+<div class="side">
+    <ul class="links" >
+            <div class="user">
+                <img src="img/user.png" alt="">
+                <h2>{{user}}</h2>
+            </div>
+                <li><i class="far fa-user-plus"></i><a href="/signup">sign up</a></li>
+                <li> <i class="far fa-sign-in"></i><a href="/signin">sign in</a></li>
+                <li> <i class="far fa-sign-out"></i><a href="/signout">sign out</a></li>
+                <li> <i class="far fa-unlock-alt"></i><a href="/changepass">change password</a></li>
+    </ul>
+</div>
+{{!-- script for toogle side bar --}}
+<script>
+    togglebtn=document.querySelector(".togglebtn")
+    togglebtn.addEventListener("click",()=>{
+        
+        if(togglebtn.classList.contains("fa-bars")){
+        togglebtn.classList.replace("fa-bars","fa-times")
+        document.querySelector(".side").style.width="330px"
+        }
+        else{
+        togglebtn.classList.replace("fa-times","fa-bars")
+        document.querySelector(".side").style.width="0%"
+
+        }
+        
+        
+    })
+</script>
+{{!-- social icon --}}
+<div id="icons">
+      <a href="https://www.facebook.com/" class="fb">click to visit <i class="fab fa-facebook fb"></i></i> </a>
+      <a href="https://telegram.org/" class="tele">click to visit <i class="fab fa-telegram-plane tele"></i></a>
+      <a href="https://www.instagram.com/" class="insta">click to visit <i class="fab fa-instagram insta"></i></a>
+      <a href="http://surl.li/ayaxp" class="link">click to visit <i class="fab fa-linkedin link"></i></a>
+      
+    </div>
+
+   
+
+
+
+

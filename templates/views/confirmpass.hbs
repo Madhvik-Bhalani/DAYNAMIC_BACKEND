@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>confirm password</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+      <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
+
+body {
+  background-color: rgb(245, 252, 252);
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  color: #222;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  height: 100vh;
+}
+.form {
+  width: 100%;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+form {
+  background-color: #fff;
+  width: 40%;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  box-sizing: border-box;
+  border-radius: 2px;
+  box-shadow: 3px 3px 3px 3px gray;
+  color: black;
+}
+
+form h2 {
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 3px;
+  text-transform: capitalize;
+}
+form h4{
+    text-align: center;
+    margin-bottom: 10px;
+    color: black;
+    text-shadow: .5px .5px .5px red;
+}
+
+input {
+  font-size: 19px;
+  font-weight: 700;
+  border: none;
+  border-bottom: 2px solid black;
+  margin-top: 30px;
+  outline: none;
+  
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+input[type="submit"] {
+  margin-top: 28px;
+  width: 180px;
+  height: 32px;
+  background: #16a085;
+  border: none;
+  border-radius: 2px;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: 0.1s ease;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+  opacity: 0.8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+
+input[type="submit"]:active {
+  opacity: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+
+    </style>
+
+</head>
+<body>
+    {{>navbar}}
+    <div class="form">
+        
+    <form action="/confirmpass" method="post" >
+        <h2>reset password</h2>
+        <h4>otp valid only for 5 min  &excl; </h4>
+        <h4>if you want to reset after 5 min it redirect to send otp page &excl;</h4>
+
+
+    <input type="number" name="confirmotp" id="confrimotp" placeholder="enter your otp">
+    <input type="password" name="pass" id="pass" placeholder="enter new password">
+    <input type="password" name="cpass" id="cpass" placeholder="enter confirm password">
+        <div class="btn">
+            <input type="submit" value="reset password" id="resetpass">
+        </div>
+    </form>
+    </div>
+
+    {{>footer}}
+</body>
+</html>

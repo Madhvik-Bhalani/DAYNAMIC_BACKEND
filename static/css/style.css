@@ -33,17 +33,20 @@ nav {
   padding: 0 20px;
   align-items: center;
   box-sizing: border-box;
+
+  height: 57px;
 }
-ul {
+#navbar ul {
   display: flex;
+  align-items: center;
 }
-ul li a {
+#navbar ul li a {
   text-decoration: none;
   font-size: 25px;
   text-transform: capitalize;
   color: white;
 }
-ul li {
+#navbar ul li {
   list-style: none;
   padding: 10px;
   transition-property: all;
@@ -51,7 +54,7 @@ ul li {
   margin: 0 7px;
 }
 
-ul li:hover {
+#navbar ul li:hover {
   transform: scale(1.2);
   font-weight: bold;
 }
@@ -86,7 +89,7 @@ ul li:hover {
 }
 
 #left p {
-  text-shadow: .7px .7px .7px rgb(247, 149, 114);
+  text-shadow: 0.7px 0.7px 0.7px rgb(247, 149, 114);
   font-size: 25px;
   width: 80%;
 
@@ -132,7 +135,7 @@ ul li:hover {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  column-gap: 10px;
+  column-gap: 17px;
   row-gap: 30px;
   padding: 20px;
   box-sizing: border-box;
@@ -155,6 +158,7 @@ ul li:hover {
   flex-direction: column;
   align-items: center;
   box-shadow: 5px 5px 3px 3px gray;
+  border-radius: 5px;
 }
 
 #service h1 {
@@ -170,12 +174,15 @@ ul li:hover {
   text-transform: capitalize;
   font-size: 30px;
   text-align: center;
-  text-shadow: .8px .8px .8px rgb(247, 149, 114);
+  text-shadow: 0.8px 0.8px 0.8px rgb(247, 149, 114);
 }
 
 i {
   font-size: 50px;
   /* text-align: center; */
+  margin-top: 15px;
+  transition-property: all;
+  transition-duration: 0.5s;
 }
 .one {
   color: #f24038;
@@ -184,16 +191,41 @@ i {
   color: darkcyan;
 }
 .three {
-  color: blue;
+  color: #3ddc84;
 }
 .four {
-  color: yellow;
+  color: #61dbfb;
 }
 .five {
-  color: rgb(236, 177, 98);
+  color: #b52e31;
 }
 .six {
-  color: orangered;
+  color: #563d7c;
+}
+
+.box1:hover i {
+  transform: scale(1.2);
+  text-shadow: 1.5px 1.5px 1.5px gray;
+}
+.box2:hover i {
+  text-shadow: 1.5px 1.5px 1.5px gray;
+  transform: scale(1.2);
+}
+.box3:hover i {
+  transform: scale(1.2);
+  text-shadow: 1.5px 1.5px 1.5px gray;
+}
+.box4:hover i {
+  transform: scale(1.2);
+  text-shadow: 1.5px 1.5px 1.5px gray;
+}
+.box5:hover i {
+  text-shadow: 1.5px 1.5px 1.5px gray;
+  transform: scale(1.2);
+}
+.box6:hover i {
+  transform: scale(1.2);
+  text-shadow: 1.5px 1.5px 1.5px gray;
 }
 
 #container h2 {
@@ -220,7 +252,7 @@ i {
   text-transform: capitalize;
   font-size: 30px;
   text-align: center;
-  text-shadow:.8px .8px .8px rgb(247, 149, 114);
+  text-shadow: 0.8px 0.8px 0.8px rgb(247, 149, 114);
 }
 #location iframe {
   margin-top: 15px;
@@ -244,37 +276,299 @@ i {
   text-transform: capitalize;
   font-size: 30px;
   text-align: center;
-  text-shadow: .8px .8px .8px rgb(247, 149, 114);
+  text-shadow: 0.8px 0.8px 0.8px rgb(247, 149, 114);
 }
 
-#left{
+#left {
   display: flex;
   /* justify-content: center; */
-  
+
   align-items: center;
 }
-#left h1{
+#left h1 {
   width: 70%;
   text-align: center;
-
 }
 
-#btns2{
+#btns2 {
   display: flex;
   justify-content: center;
   margin-top: 20px;
 }
 
-#btns2 .btn2{
+#btns2 .btn2 {
   margin-left: 10px;
-  background-color: rgb(243, 186, 99) !important; 
+  background-color: rgb(250, 168, 45) !important;
   box-shadow: 1.7px 1.7px 1.7px 1.7px gray;
   outline: none;
 }
 
-#btns2 .btn1{
+#btns2 .btn1 {
   outline: none;
   box-shadow: 1.7px 1.7px 1.7px 1.7px gray;
-  background-color: rgb(247, 92, 92) !important;
+  background-color: rgb(252, 50, 50) !important;
+}
+
+/* contact */
+#contact {
+  margin: 20px 0 40px 0;
+  
+}
+#contact h1 {
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 50px;
+  text-shadow: 2.2px 2.2px 2.2px rgb(247, 149, 114);
+  text-transform: capitalize;
+  font-weight: bold;
+}
+#contact p {
+  font-weight: bold;
+  text-transform: capitalize;
+  font-size: 30px;
+  text-align: center;
+  text-shadow: 0.8px 0.8px 0.8px rgb(247, 149, 114);
+}
+
+#contactcontainer {
+  width: 100%;
+  height: 600px;
+  /* background-color: antiquewhite; */
+  display: flex;
+  box-sizing: border-box;
+  padding: 20px;
+  justify-content: space-around;
+}
+#contactcontainer form {
+  width: 70%;
+  /* border: 2px solid rgb(128, 64, 64); */
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: inset 4px 4px 4px 4px gray;
+  border-radius: 5px;
+}
+#contactcontainer #map {
+  box-shadow: inset 4px 4px 4px 4px gray;
+  padding: 20px;
+  width: 28%;
+  /* border: 2px solid red; */
+  margin-left: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+
+#contactcontainer form label {
+  font-size: 22px;
+  margin-top: 14px;
+  text-transform: capitalize;
+}
+#contactcontainer span {
+  color: red;
+}
+
+#contactcontainer form input {
+  padding: 7px;
+  font-size: 17px;
+  border-radius: 7px;
+}
+
+#contactcontainer form textarea {
+  border-radius: 7px;
+  padding: 7px;
+  font-size: 17px;
+}
+
+#contactcontainer form #submitmsg {
+  width: 130px;
+  margin-top: 14px;
+  font-size: 17px;
+  background-color: rgb(104, 104, 252);
+  color: white;
+  outline: none;
+  border-radius: 7px;
+}
+
+/* sidelogo */
+#icons {
+  position: fixed;
+  top: 50%;
+  left: 0px;
+
+  /* uoer rey te mate niche thi pan 5 */
+  transform: translateY(-50%);
+  z-index: 1;
+}
+#icons a {
+  display: flex;
+  width: 170px;
+  justify-content: flex-end;
+  align-items: center;
+  text-transform: capitalize;
+  box-sizing: border-box;
+  /* background-color: blue; */
+  color: white;
+  font-size: 20px;
+  padding: 2px;
+
+  text-decoration: none;
+
+  transform: translateX(-130px);
+  transition-property: all;
+  transition-timing-function: linear;
+  transition-duration: 0.6s;
+  border-radius: 2px;
+}
+#icons a:hover {
+  transform: translateX(0);
+}
+
+#icons .fab {
+  font-size: 30px;
+  margin-left: 15px;
+  animation-name: icons;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+
+  animation-timing-function: linear;
+  animation-duration: 1s;
+  margin-bottom: 8px;
+  box-sizing: border-box;
+  margin-right: 5px;
+}
+
+@keyframes icons {
+  from {
+    transform: scale(0.8);
+  }
+  to {
+    transform: scale(1.2);
+  }
+}
+#icons .fb {
+  background-color: #4267b2;
+}
+#icons .tele {
+  background-color: #0088cc;
+}
+#icons .insta {
+  background-color: rgb(245, 71, 71);
+}
+#icons .link {
+  background-color: blue;
+}
+
+/* side bar */
+.togglemenu {
+  height: inherit;
+}
+.togglemenu i {
+  color: white;
+  font-size: 30px;
+}
+.side {
+  box-sizing: border-box;
+  position: fixed;
+  right: 0px;
+  top: 55px;
+  width: 0%;
+  transition-property: all;
+  transition-duration: 0.5s;
+  overflow: hidden;
+  height: 100vh;
+  background-color: #61dbfb;
+}
+
+.side ul {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  align-items: center;
+  /* height: inherit; */
+}
+
+.side ul li {
+  padding: 12px 15px;
+  margin-top: 5px;
+  transition-property: all;
+  transition-duration: 0.5s;
+  list-style: none;
+}
+
+.side .fa-user {
+  font-size: 80px;
+  color: #824e4b;
+  margin-bottom: 5px;
+  text-shadow: 1px 1px 1px black;
+}
+
+.user  {
+  margin: 25px 0;
+}
+.side .user img{
+  width: 100px;
+  height: 100px;
+}
+.side ul li a {
+  font-size: 27px;
+  text-decoration: none;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+  font-weight: bold;
+  text-align: center;
+}
+.side .fa-sign-in,
+.side .fa-sign-out,
+.side .fa-unlock-alt,
+.side .fa-user-plus {
+  font-size: 27px;
+  margin-right: 15px;
+  text-shadow: 0.9px 0.9px 0.9px white;
+}
+
+.togglemenu i {
+  transition-property: all;
+  transition-duration: 0.5s;
+}
+
+.side ul li:hover i {
+  transform: translateX(10px);
+}
+
+.side .user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.side .user h2 {
+  color: white;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px blue;
+  margin-top:3px;
+}
+
+/* footer */
+.footer{
+  background-color: rgb(43, 42, 42)
+  ;
+  color: white;
+  width: 100%;
+  text-transform: capitalize;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  
+}
+
+.fa-bring-front{
+  font-size: 27px;
+  color: rgb(241, 199, 93);
+}.footer h2{
+  font-size: 30px;
+  color: white;
+  text-shadow: 2px 2px 2px rgb(17, 17, 15);
 }
 
