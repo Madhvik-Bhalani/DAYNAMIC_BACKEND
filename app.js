@@ -236,12 +236,13 @@ app.post("/confirmpass",async (req,res)=>{
         const otp=req.body.confirmotp
         const data=await passmodel.findOne({otp});
         const mail=data.mail;
-        console.log(mail);
+        // console.log(mail);
         await upmodel.findOne({mail});
         
         recenttime=new Date().getTime()
+        
         const diff=data.expire-recenttime;
-        console.log(diff);
+        // console.log(diff);
         if(diff<0)
         {
             await passmodel.deleteOne({otp})
@@ -255,11 +256,11 @@ app.post("/confirmpass",async (req,res)=>{
                     rpass=req.body.pass
                     console.log(rpass);
                     hashpass=await bcrypt.hash(rpass,10)
-                    console.log(hashpass);
+                    // console.log(hashpass);
                     updated=await upmodel.findOneAndUpdate({mail},{pass:hashpass},{
                         new:true
                     })
-                    console.log(updated);
+                    // console.log(updated);
                     
                     res.render('index')
                 }
