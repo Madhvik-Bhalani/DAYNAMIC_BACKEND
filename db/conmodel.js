@@ -39,6 +39,6 @@ const scm = new mongoose.Schema({
 })
 scm.plugin(unival)
 
-const conmodel = new mongoose.model("contact", scm)
+const conmodel = new mongoose.model(`${process.env.CONTACT}`, scm)
 
 module.exports = conmodel;
