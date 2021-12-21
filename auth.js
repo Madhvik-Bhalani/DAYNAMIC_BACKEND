@@ -7,7 +7,7 @@ const auth = async (req, res, next) => {
     try {
         upjwt = req.cookies.upjwt
         injwt = req.cookies.injwt
-        data=await jwt.verify((upjwt||injwt), process.env.secretkey)
+        data=await jwt.verify((upjwt||injwt), process.env.SKEY)
         // const _id=data._id;
         // const finaldata=await upmodel.findOne({_id})
         // mail=finaldata.mail

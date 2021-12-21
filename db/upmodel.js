@@ -62,9 +62,9 @@ scm.pre("save", async function (next) {
     }
 })
 
-scm.methods.gentoken=async function(next){
+scm.methods.gentoken=async function(){
     try {
-       token=await jwt.sign({_id:this._id},process.env.secretkey)
+       token=await jwt.sign({_id:this._id},process.env.SKEY)
        this.tokens=this.tokens.concat({token:token})
        return token;
     //    next();

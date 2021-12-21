@@ -6,7 +6,7 @@ const async = require("hbs/lib/async")
 const auth2 = async (req, res, next) => {
     try {
         injwt = req.cookies.injwt
-        await jwt.verify(injwt, process.env.secretkey)
+        await jwt.verify(injwt, process.env.SKEY)
         next();
     } catch (e) {
         res.render('outwarn')
