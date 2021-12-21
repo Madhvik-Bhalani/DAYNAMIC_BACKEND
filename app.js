@@ -50,8 +50,8 @@ app.post("/contact", async (req, res) => {
             msg: req.body.msg
         })
 
-        const saved = await condata.save();
-        console.log(`data saved:${saved}`);
+        await condata.save();
+        // console.log(`data saved:${saved}`);
 
 
         res.render('index')
