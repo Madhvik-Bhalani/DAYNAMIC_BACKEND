@@ -183,10 +183,11 @@ app.post("/changepass", async (req, res) => {
         await data.save();
         // send mail
         const transporter = nodemailer.createTransport({
-            service: 'gmail',
+            host:"smtp.gmail.com",
+            port: 587,
             auth: {
                 user: "madhvikbhalaniak37@gmail.com",
-                pass: "MADHVIKak73"
+                pass: `${process.env.pass}`
             }
         })
 
