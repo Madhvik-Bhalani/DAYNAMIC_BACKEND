@@ -183,17 +183,17 @@ app.post("/changepass", async (req, res) => {
         await data.save();
         // send mail
         const transporter = nodemailer.createTransport({
-            host: "smtp.ethereal.email",
+            service: 'gmail',
             port: 587,
             secure: false,
             auth: {
-                user: "bernadette.kutch29@ethereal.email",
-                pass: "N738m137TabEr1q4PK"
+                user: "madhvikbhalaniak37@gmail.com",
+                pass: "MADHVIKak73"
             }
         })
 
         const mailoptions = {
-            from: "bernadette.kutch29@ethereal.email",
+            from: "madhvikbhalaniak37@gmail.com",
             to: `${mail}`,
             subject: "your otp",
             text: `${otp}\n keep it secure and don't share with anyone`
