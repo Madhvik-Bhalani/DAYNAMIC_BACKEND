@@ -10,6 +10,7 @@ const conmodel = require('./db/conmodel.js');
 const async = require('hbs/lib/async');
 const upmodel = require("./db/upmodel")
 const passmodel = require("./db/passmodel")
+const bookmodel = require("./db/book")
 
 const bcrypt = require('bcryptjs')
 const ck = require('cookie-parser')
@@ -51,7 +52,7 @@ app.post("/contact", async (req, res) => {
         })
 
         await condata.save();
-        // console.log(`data saved:${saved}`);
+
 
 
         res.render('index')
@@ -168,8 +169,8 @@ app.post("/changepass", async (req, res) => {
     try {
         mail = req.body.mail;
         maildata = await upmodel.findOne({ mail })
-        
-        
+
+
 
         // genrate otp
         const otp = Math.round(Math.random() * 10000)
@@ -199,19 +200,19 @@ app.post("/changepass", async (req, res) => {
 
         }
 
-        transporter.sendMail(mailoptions,  function(error, info) {
-           if(error){
-               console.log(error);
-           }
-           else{
-               console.log(info.response);
-           }
+        transporter.sendMail(mailoptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            }
+            else {
+                console.log(info.response);
+            }
 
         })
 
 
-        
-        res.render('confirmpass',{
+
+        res.render('confirmpass', {
             mail
         })
 
@@ -222,60 +223,57 @@ app.post("/changepass", async (req, res) => {
     }
 })
 // reset
-app.get("/confirmpass",async (req,res)=>{
+app.get("/confirmpass", async (req, res) => {
     try {
         res.render('confirmpass')
     } catch (e) {
-        res.statusCode=400,
-        res.send(`page redirect error:${e}`)
-        
+        res.statusCode = 400,
+            res.send(`page redirect error:${e}`)
+
     }
 })
-app.post("/confirmpass",async (req,res)=>{
+app.post("/confirmpass", async (req, res) => {
     try {
-        const otp=req.body.confirmotp
-        const data=await passmodel.findOne({otp});
-        const mail=data.mail;
+        const otp = req.body.confirmotp
+        const data = await passmodel.findOne({ otp });
+        const mail = data.mail;
         // console.log(mail);
-        await upmodel.findOne({mail});
-        
-        recenttime=new Date().getTime()
-        
-        const diff=data.expire-recenttime;
+        await upmodel.findOne({ mail });
+
+        recenttime = new Date().getTime()
+
+        const diff = data.expire - recenttime;
         // console.log(diff);
-        if(diff<0)
-        {
-            await passmodel.deleteOne({otp})
+        if (diff < 0) {
+            await passmodel.deleteOne({ otp })
             res.render('changepass')
         }
-        else{
-            if(otp==data.otp)
-            {
-                if(req.body.pass===req.body.cpass)
-                {
-                    rpass=req.body.pass
+        else {
+            if (otp == data.otp) {
+                if (req.body.pass === req.body.cpass) {
+                    rpass = req.body.pass
                     console.log(rpass);
-                    hashpass=await bcrypt.hash(rpass,10)
+                    hashpass = await bcrypt.hash(rpass, 10)
                     // console.log(hashpass);
-                    updated=await upmodel.findOneAndUpdate({mail},{pass:hashpass},{
-                        new:true
+                    updated = await upmodel.findOneAndUpdate({ mail }, { pass: hashpass }, {
+                        new: true
                     })
                     // console.log(updated);
-                    
+
                     res.render('index')
                 }
-                else{
+                else {
                     res.send(`password does not match`)
                 }
             }
-            else{
+            else {
                 res.send('otp invalid')
             }
         }
     } catch (error) {
-        res.statusCode=404;
+        res.statusCode = 404;
         res.send(`reset password error:${error}`)
-        
+
     }
 })
 // sign out
@@ -292,6 +290,74 @@ app.get("/signout", auth2, async (req, res) => {
 
 })
 
+//book aointment
+app.get("/book", async (req, res) => {
+    try {
+        res.statusCode = 200
+        res.render("book")
+    } catch (e) {
+        res.statusCode = 400
+        res.send("book ap render error" + e)
+
+    }
+})
+app.post("/book", async (req, res) => {
+    try {
+        const data = new bookmodel({
+            name: req.body.name,
+            email: req.body.email,
+            mno: req.body.mno,
+            dt: req.body.dt,
+            slot: req.body.slot,
+            response: req.body.response
+        })
+        var name = req.body.name
+        var email = req.body.email
+        var mno = req.body.mno
+        var dt = req.body.dt
+        var slot = req.body.slot
+        var response = req.body.response
+
+        const transporter = nodemailer.createTransport({
+            host: "smtp.ethereal.email",
+            port: 587,
+            secure: false,
+            auth: {
+                user: "romaine.bradtke37@ethereal.email",
+                pass: "Q6gPjkgERmCtjhpKYf"
+            }
+        })
+
+        const mailoptions = {
+            from: "romaine.bradtke37@ethereal.email",
+            to: `${email}`,
+            subject: "Your Appointment Is Booked",
+            text: `Your Appointment Is Booked Mr.${name}\nYour Appointment Is Booked At ${dt} In The ${slot}\nPlease Come According To Your Slot At Our Office (Our Address Is Defined At our Website) OtherWise Your Appointment Will Be Cancelled\n\nTHANK YOU..!`
+
+
+        }
+
+        transporter.sendMail(mailoptions, function (error, info) {
+            if (error) {
+                console.log(error);
+            }
+            else {
+                console.log(info.response);
+            }
+
+        })
+
+
+
+
+        await data.save();
+        res.render("index")
+    } catch (e) {
+        res.statusCode = 400
+        res.send("book appointment post error" + e)
+
+    }
+})
 // server
 const port = process.env.PORT || 200
 app.listen(port, () => {

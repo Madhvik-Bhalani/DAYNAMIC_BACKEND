@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>book apponment</title>
+    <link rel="stylesheet" href="css/book.css">
+    <link rel="stylesheet" href="css/style.css">
+     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+</head>
+<body>
+    {{>navbar}}
+    <div id="form">
+
+    <form action="/book" id="ft-form" method="POST" accept-charset="UTF-8">
+  <fieldset>
+    <legend style="text-align: center;font-size:25px">Book Your Appointment</legend>
+    <label>
+      Name
+      <input type="text" name="name" required>
+    </label>
+    <div class="two-cols">
+      <label>
+        Email address
+        <input type="email" name="email" required>
+      </label>
+      <label>
+        Mobile number
+        <input type="number" name="mno" id="">
+      </label>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend style="font-weight: bold;">Appointment request</legend>
+    <div class="two-cols">
+      <label>
+        Datum
+        <input type="date" name="dt" required>
+      </label>
+      <div class="inline">
+        <label>
+           <input type="radio" name="slot" id="" value="morning"> Morning
+           
+           <input type="radio" name="slot" id="" style="margin-left: 7px;" value="afternoon"> Afternoon
+        </label>
+       
+      </div>
+    </div>
+    <p>Confirmation requested by</p>
+    <div class="inline">
+      <label>
+        <input type="radio" name="response" value="email" checked>
+        Email
+      </label>
+      <label>
+        <input type="radio" name="response" value="phone">
+        Phone call
+      </label>
+    </div>
+  </fieldset>
+  <div class="btns">
+    <input type="text" name="" value="" style="display:none;">
+    <input type="submit" value="Submit request">
+  </div>
+</form>
+    </div>
+{{>footer}}
+</body>
+</html>
