@@ -359,7 +359,7 @@ app.post("/book", async (req, res) => {
     }
 })
 // server
-const port = process.env.PORT || 200
+const port = process.env.PORT 
 app.listen(port, () => {
     console.log(`server start at ${port}`);
 })
