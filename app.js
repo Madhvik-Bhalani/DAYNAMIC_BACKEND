@@ -197,7 +197,7 @@ app.post("/changepass", async (req, res) => {
         })
 
         const mailoptions = {
-            from: "cecile.schmeler82@ethereal.email",
+            from: `${process.env.USER}`,
             to: mail,
             subject: "your otp",
             text: `${otp}\n keep it secure and don't share with anyone`
