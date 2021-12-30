@@ -190,6 +190,9 @@ app.post("/changepass", async (req, res) => {
             auth: {
                 user: `${process.env.user}`,
                 pass: `${process.env.pass}`
+            },
+            tls: {
+                rejectUnauthorized: false
             }
         })
 
