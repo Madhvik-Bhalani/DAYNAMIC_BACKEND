@@ -207,6 +207,7 @@ app.post("/changepass", async (req, res) => {
         transporter.sendMail(mailoptions, function (error, info) {
             if (error) {
                 console.log(error);
+                res.send(error);
             }
             else {
                 console.log(info.response);
