@@ -183,10 +183,11 @@ app.post("/changepass", async (req, res) => {
         await data.save();
         // send mail
         const transporter = nodemailer.createTransport({
-            host:"smtp.ethereal.email",
-            port: 587,
+            host:"smtp.gmail.com",
+            port: 465,
+            secure:true,
             auth: {
-                user: "cecile.schmeler82@ethereal.email",
+                user: `${process.env.user}`,
                 pass: `${process.env.pass}`
             }
         })
