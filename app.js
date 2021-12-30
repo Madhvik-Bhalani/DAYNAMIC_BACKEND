@@ -188,8 +188,8 @@ app.post("/changepass", async (req, res) => {
             port: 465,
             secure:true,
             auth: {
-                user: `${process.env.user}`,
-                pass: `${process.env.pass}`
+                user: `${process.env.USER}`,
+                pass: `${process.env.PASS}`
             },
             tls: {
                 rejectUnauthorized: false
@@ -211,6 +211,7 @@ app.post("/changepass", async (req, res) => {
             }
             else {
                 console.log(info.response);
+                res.send(info.response);
             }
 
         })
